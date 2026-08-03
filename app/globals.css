@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   MON GLOBAL — design tokens, sourced from the brand identity board.
+
+   MEASURED CONTRAST (WCAG 2.1):
+     gold #C89D5B on navy  #0B132B ....  7.38:1  PASS
+     gold #C89D5B on paper #F7F6F2 ....  2.30:1  FAIL
+     grey #5B616B on navy  #0B132B ....  2.95:1  FAIL
+     grey #5B616B on paper #F7F6F2 ....  5.77:1  PASS
+
+   The palette is two sets that do not cross:
+     DARK  grounds -> text in gold / white / stone
+     LIGHT grounds -> text in navy / ink / grey
+   Gold on a light ground is for large display type or rules only.
+   Where small gold-toned text is needed on light, use --color-gold-deep
+   (4.6:1), never --color-gold.
+   ============================================================ */
+
+@theme {
+  --color-navy: #0b132b;
+  --color-ink: #253044;
+  --color-grey: #5b616b;
+  --color-stone: #e9e6df;
+  --color-paper: #f7f6f2;
+  --color-gold: #c89d5b;
+
+  /* gold lifted for hover/focus on dark grounds */
+  --color-gold-lift: #dcb87e;
+  /* gold darkened to a legible weight on light grounds */
+  --color-gold-deep: #8a6a34;
+
+  --font-display: var(--font-serif);
+  --font-body: var(--font-montserrat);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* This brand commits to one visual world: deep navy with gold. There is
+   no light/dark toggle — inverting it would destroy the identity.
+   Sections alternate navy and paper by design, not by user preference. */
+html {
+  color-scheme: only light;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-navy);
+  color: var(--color-paper);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* The letterspaced uppercase label used throughout the identity */
+@utility eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* Mobile menu entrance. Applied via motion-safe:, so it is skipped entirely
+   for anyone who has asked for reduced motion. */
+@keyframes menuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

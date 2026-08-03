@@ -1,0 +1,137 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>MON — brand sheet</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<style>
+  :root{--navy:#0B132B;--ink:#253044;--grey:#5B616B;--stone:#E9E6DF;
+        --paper:#F7F6F2;--gold:#C89D5B;--gold-deep:#8A6A34}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:14px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+       padding:32px clamp(16px,4vw,48px) 80px}
+  .wrap{max-width:1060px;margin:0 auto}
+  h1{font-size:22px;letter-spacing:-.02em;margin:0 0 6px}
+  .sub{color:var(--grey);margin:0 0 34px;max-width:64ch}
+  section{border-top:1px solid #dedbd4;padding-top:22px;margin-top:32px}
+  h2{font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+     color:var(--gold-deep);margin:0 0 6px;font-weight:600}
+  .lede{color:var(--grey);margin:0 0 18px;max-width:64ch}
+  .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px}
+  figure{margin:0;border:1px solid #e2e0da;background:#fff;padding:26px 28px;
+         display:flex;flex-direction:column;gap:16px;justify-content:space-between}
+  figure.dark{background:var(--navy);border-color:var(--navy)}
+  figure img{width:100%;height:auto;display:block}
+  figcaption{font:11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;
+             color:var(--grey);word-break:break-all}
+  figure.dark figcaption{color:var(--stone)}
+  .sizes{display:flex;align-items:flex-end;gap:30px;flex-wrap:wrap}
+  .sizes img{width:auto}
+  .note{background:#fff;border:1px solid #e2e0da;border-left:2px solid var(--gold);
+        padding:14px 16px;color:var(--grey);margin-top:14px}
+  .note strong{color:var(--ink)}
+  code{font:12px ui-monospace,Menlo,monospace;background:#ecebe5;padding:1px 5px}
+  .swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:12px}
+  .sw{border:1px solid #e2e0da;background:#fff}
+  .sw div{height:58px}
+  .sw p{margin:0;padding:9px 11px;font:11px ui-monospace,Menlo,monospace;color:var(--grey)}
+</style>
+
+<div class="wrap">
+  <h1>MON — brand sheet</h1>
+  <p class="sub">All marks are true vector, drawn from real font outlines with no
+    font dependency. Regenerate with <code>python3 scripts/build-logo-block.py</code>
+    — never hand-edit the SVGs.</p>
+
+  <section>
+    <h2>Primary — full lockup</h2>
+    <p class="lede">The block mark with its tagline. For print, covers and any
+      application wide enough to read the tagline.</p>
+    <div class="row">
+      <figure><img src="/brand/mong-block.svg" alt="mong">
+        <figcaption>mong-block.svg</figcaption></figure>
+      <figure><img src="/brand/monc-block.svg" alt="monc">
+        <figcaption>monc-block.svg</figcaption></figure>
+      <figure class="dark"><img src="/brand/mong-block-reversed.svg" alt="mong reversed">
+        <figcaption>mong-block-reversed.svg</figcaption></figure>
+      <figure class="dark"><img src="/brand/monc-block-reversed.svg" alt="monc reversed">
+        <figcaption>monc-block-reversed.svg</figcaption></figure>
+    </div>
+    <div class="note"><p style="margin:0">On navy the solid block would
+      disappear, so the reversed cut draws it as a <strong>gold outline</strong>.
+      Same silhouette, no navy-on-navy void.</p></div>
+  </section>
+
+  <section>
+    <h2>Compact — no tagline</h2>
+    <p class="lede">Used by the site header, favicons and avatars. At ~31px the
+      tagline renders about 4px tall: present but unreadable, which is worse
+      than absent.</p>
+    <div class="row">
+      <figure><img src="/brand/mong-block-compact.svg" alt="mong compact">
+        <figcaption>mong-block-compact.svg</figcaption></figure>
+      <figure><img src="/brand/monc-block-compact.svg" alt="monc compact">
+        <figcaption>monc-block-compact.svg</figcaption></figure>
+      <figure class="dark"><img src="/brand/mong-block-compact-reversed.svg" alt="mong compact reversed">
+        <figcaption>mong-block-compact-reversed.svg</figcaption></figure>
+      <figure class="dark"><img src="/brand/monc-block-compact-reversed.svg" alt="monc compact reversed">
+        <figcaption>monc-block-compact-reversed.svg</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Size test — does it survive small?</h2>
+    <div class="row" style="grid-template-columns:1fr">
+      <figure class="dark">
+        <div class="sizes">
+          <img src="/brand/mong-block-compact-reversed.svg" style="height:56px" alt="56px">
+          <img src="/brand/mong-block-compact-reversed.svg" style="height:40px" alt="40px">
+          <img src="/brand/mong-block-compact-reversed.svg" style="height:31px" alt="31px">
+          <img src="/brand/mong-block-compact-reversed.svg" style="height:22px" alt="22px">
+        </div>
+        <figcaption>56 / 40 / 31 / 22px — 31px is the live site header size</figcaption>
+      </figure>
+      <figure>
+        <div class="sizes">
+          <img src="/brand/mong-block.svg" style="height:56px" alt="full 56px">
+          <img src="/brand/mong-block.svg" style="height:34px" alt="full 34px">
+        </div>
+        <figcaption>full lockup at 56 / 34px — the tagline is why the compact cut exists</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Palette</h2>
+    <div class="swatches">
+      <div class="sw"><div style="background:#0B132B"></div><p>navy #0B132B</p></div>
+      <div class="sw"><div style="background:#C89D5B"></div><p>gold #C89D5B</p></div>
+      <div class="sw"><div style="background:#8A6A34"></div><p>gold-deep #8A6A34</p></div>
+      <div class="sw"><div style="background:#253044"></div><p>ink #253044</p></div>
+      <div class="sw"><div style="background:#5B616B"></div><p>grey #5B616B</p></div>
+      <div class="sw"><div style="background:#E9E6DF"></div><p>stone #E9E6DF</p></div>
+    </div>
+    <div class="note"><p style="margin:0"><strong>Gold is a dark-ground
+      colour.</strong> On paper it measures 2.30:1 — below every WCAG floor.
+      Small gold-toned text on light uses <code>gold-deep</code> (4.6:1).</p></div>
+  </section>
+
+  <section>
+    <h2>Superseded — serif treatment</h2>
+    <p class="lede">The earlier MON + split-ring marks. Not the brand any more,
+      but still generated by <code>build-logo.py</code> because
+      <code>../social/build.py</code> renders Instagram posts from them. Do not
+      use these for anything new.</p>
+    <div class="row">
+      <figure><img src="/brand/mon-global.svg" alt="superseded serif mark">
+        <figcaption>mon-global.svg — superseded</figcaption></figure>
+      <figure><img src="/brand/mon-consultancy.svg" alt="superseded serif mark">
+        <figcaption>mon-consultancy.svg — superseded</figcaption></figure>
+    </div>
+    <div class="note"><p style="margin:0"><strong>This page ships with the
+      site.</strong> It is <code>noindex</code>, but it lives in
+      <code>public/</code> and will be reachable at
+      <code>/brand/sheet.html</code> once deployed. Delete it or put it behind
+      auth before going live.</p></div>
+  </section>
+</div>

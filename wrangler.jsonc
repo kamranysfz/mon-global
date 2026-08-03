@@ -1,0 +1,17 @@
+{
+  // Static-assets Worker. The whole site prerenders (see `output: "export"` in
+  // next.config.ts), so there is no server to run — Cloudflare just serves the
+  // files from the edge.
+  //
+  // Deploy:  npx wrangler deploy
+  // The build must be current first:  npm run build
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mon-global",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./out",
+    // Static export writes 404.html; serve it for unknown paths so a bad URL
+    // gets the styled not-found page rather than Cloudflare's default.
+    "not_found_handling": "404-page"
+  }
+}
