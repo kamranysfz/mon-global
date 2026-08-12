@@ -403,13 +403,13 @@ export default function Home() {
                   once one is claimed; the numeric id keeps working either way. */}
               <div className="mt-4 flex flex-col gap-2">
                 <a
-                  href="https://www.instagram.com/global.monc/"
+                  href="https://www.instagram.com/moncglobal/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 transition-colors hover:text-gold"
                 >
                   <IconInstagram className="h-4 w-4" />
-                  <span>@global.monc</span>
+                  <span>@moncglobal</span>
                 </a>
                 <a
                   href="https://www.facebook.com/profile.php?id=61592655997105"
