@@ -165,8 +165,15 @@ export default function Home() {
               first conversation to the passports in your hands.
             </p>
             <div className="mt-11 flex flex-wrap items-center gap-4">
+              {/* Goes to WhatsApp, not to #contact. Both buttons on the page
+                  carry this label, so both have to do the same thing — when
+                  this one scrolled to the Contact section the reader met the
+                  identical button again and had no way to tell the two apart.
+                  There is no form to scroll to; the conversation is the CTA. */}
               <a
-                href="#contact"
+                href="https://wa.me/971544994859"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="eyebrow bg-gold px-8 py-4 text-navy transition-colors hover:bg-gold-lift"
               >
                 Book a private consultation

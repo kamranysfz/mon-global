@@ -5,15 +5,17 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { IconWhatsApp } from "./icons";
 
-/* "#" marks a destination that does not exist yet. Those stay placeholders
-   until the pages are built — Services, Process and Contact all have live
-   anchors on the home page and can be wired the same way as Citizenship. */
+/* Every entry here points at a section that exists. About us, Properties and
+   Insights used to sit alongside these with href="#", which on a one-page site
+   means the link does nothing at all: the reader clicks a navigation item and
+   the page does not move. A menu that lies about what the site contains costs
+   more than a shorter menu.
+
+   Put them back the moment there is something to point at — either a new
+   section id on this page, or a real route. */
 const NAV = [
-  { label: "About us", href: "#" },
   { label: "Services", href: "#services" },
-  { label: "Properties", href: "#" },
   { label: "Citizenship", href: "#routes" },
-  { label: "Insights", href: "#" },
   { label: "Contact", href: "#contact" },
 ];
 
