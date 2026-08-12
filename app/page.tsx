@@ -349,8 +349,13 @@ export default function Home() {
                 honestly whether we can help, and what it would involve.
               </p>
             </div>
+            {/* Same wa.me link as the header — see SiteHeader for why the
+                number carries no "+", spaces or dashes. Opens in a new tab so
+                the page is still here when the conversation ends. */}
             <a
-              href="#"
+              href="https://wa.me/971544994859"
+              target="_blank"
+              rel="noopener noreferrer"
               className="eyebrow shrink-0 self-start bg-navy px-8 py-4 text-paper transition-colors hover:bg-ink lg:self-auto"
             >
               Book a private consultation
