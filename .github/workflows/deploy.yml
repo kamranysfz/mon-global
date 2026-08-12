@@ -1,0 +1,68 @@
+name: Deploy to GitHub Pages
+
+# The site is a static export (see `output: "export"` in next.config.ts), so
+# this builds it and hands the files to Pages. There is no server to run.
+#
+# Replaces the old process, which was: build locally, then copy `out/` into the
+# repo by hand. That copy could silently drop CNAME — which would take mong.ae
+# off its custom domain — so CNAME now lives in `public/` and is emitted by the
+# build itself.
+#
+# No step interpolates event data (commit messages, branch names, PR titles)
+# into a shell command, which is how workflow injections get in.
+on:
+  push:
+    branches: [main]
+  # Lets a deploy be re-run from the Actions tab without an empty commit.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race. `cancel-in-progress: false` because a superseded
+# run should still finish publishing rather than leave Pages half-updated.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Matches the local toolchain the site was built with.
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      # Fails loudly here rather than silently serving off the wrong domain:
+      # Pages drops the custom domain if CNAME is missing from the published
+      # files, which is exactly what the old manual copy risked.
+      - name: Verify CNAME survived the build
+        run: |
+          test -f out/CNAME || { echo "::error::out/CNAME missing — mong.ae would be dropped"; exit 1; }
+          grep -qx 'mong.ae' out/CNAME || { echo "::error::out/CNAME is not mong.ae"; cat out/CNAME; exit 1; }
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

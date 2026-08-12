@@ -5,13 +5,16 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { IconWhatsApp } from "./icons";
 
+/* "#" marks a destination that does not exist yet. Those stay placeholders
+   until the pages are built — Services, Process and Contact all have live
+   anchors on the home page and can be wired the same way as Citizenship. */
 const NAV = [
-  "About us",
-  "Services",
-  "Properties",
-  "Citizenship",
-  "Insights",
-  "Contact",
+  { label: "About us", href: "#" },
+  { label: "Services", href: "#services" },
+  { label: "Properties", href: "#" },
+  { label: "Citizenship", href: "#routes" },
+  { label: "Insights", href: "#" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const CITIES = ["Dubai", "İstanbul", "Antalya", "Bodrum", "İzmir"];
@@ -93,13 +96,13 @@ export function SiteHeader() {
 
           <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center gap-8">
-              {NAV.map((item) => (
-                <li key={item}>
+              {NAV.map(({ label, href }) => (
+                <li key={label}>
                   <a
-                    href="#"
+                    href={href}
                     className="text-[13px] tracking-wide text-stone/75 transition-colors hover:text-gold"
                   >
-                    {item}
+                    {label}
                   </a>
                 </li>
               ))}
@@ -181,14 +184,14 @@ export function SiteHeader() {
             className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-8"
           >
             <ul className="flex flex-col">
-              {NAV.map((item) => (
-                <li key={item} className="border-b border-gold/10">
+              {NAV.map(({ label, href }) => (
+                <li key={label} className="border-b border-gold/10">
                   <a
-                    href="#"
+                    href={href}
                     onClick={() => setOpen(false)}
                     className="block py-5 font-display text-3xl tracking-tight text-paper transition-colors hover:text-gold"
                   >
-                    {item}
+                    {label}
                   </a>
                 </li>
               ))}

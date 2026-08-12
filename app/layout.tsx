@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     "We help families secure their future through property ownership and Turkish citizenship. Expert guidance across İstanbul, Antalya, Bodrum and İzmir, from Dubai.",
   // metadataBase makes the relative og:image absolute. Without it Next emits a
   // relative URL, which most scrapers ignore — and the fallback is the favicon.
-  metadataBase: new URL("https://global.monc.ae"),
+  metadataBase: new URL("https://mong.ae"),
   openGraph: {
     title: "MON Global — Turkish Property & Citizenship Advisory",
     description:
       "We help families secure their future through property ownership and Turkish citizenship.",
     locale: "en_AE",
     type: "website",
-    url: "https://global.monc.ae",
+    url: "https://mong.ae",
     siteName: "MON Global",
     // 1200x630 is what every platform crops from. Without this, WhatsApp and
     // iMessage fall back to the favicon — which was Next.js's default triangle,

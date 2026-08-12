@@ -72,6 +72,63 @@ const PROCESS = [
   { Icon: IconPassport, name: "Passports", body: "On approval, passports are issued to your family." },
 ];
 
+/* Minimum QUALIFYING investments, quoted "from" and excluding government,
+   legal and due-diligence fees — never presented as a total cost.
+
+   Two figures on the older marketing set were already wrong when it shipped:
+   Greece raised its threshold in 2024 and is now tiered by location, and
+   Portugal's property route closed in 2023, leaving the €250,000 cultural
+   route. Both are corrected here.
+
+   Malta appears under residency only. Its citizenship-by-investment scheme is
+   deliberately not listed, following the 2025 ECJ ruling against it; the
+   residency programme is a separate scheme and unaffected. */
+const ROUTES = [
+  {
+    group: "Citizenship by investment",
+    note: "A donation to the state. The fastest way to a second passport, and the money is spent — there is no asset at the end of it.",
+    programmes: [
+      {
+        country: "Vanuatu",
+        from: "from $130,000",
+        detail: "The quickest route available, and the narrowest travel access.",
+      },
+      { country: "Dominica", from: "from $200,000" },
+      { country: "St Kitts & Nevis", from: "from $230,000" },
+      { country: "Antigua & Barbuda", from: "from $230,000" },
+      { country: "Grenada", from: "from $235,000" },
+      { country: "St Lucia", from: "from $240,000" },
+    ],
+  },
+  {
+    group: "Residency by investment",
+    note: "An investment rather than a donation, and most routes leave you holding an asset. Residency is not citizenship — each carries its own qualifying period before that becomes a question.",
+    programmes: [
+      { country: "Malta", from: "from €135,000" },
+      {
+        country: "Hungary",
+        from: "from €250,000",
+        detail: "Ten years, renewable, with no requirement to live there.",
+      },
+      {
+        country: "Portugal",
+        from: "from €250,000",
+        detail: "The cultural route. The property route closed in 2023.",
+      },
+      {
+        country: "Greece",
+        from: "€250,000–€800,000",
+        detail: "Tiered by location since 2024. The lowest band is narrow.",
+      },
+    ],
+  },
+];
+
+/* Shown to the reader, so it has to be a real date. Update it whenever the
+   figures above are re-checked — this is a review date, not today's date, and
+   deriving it from new Date() would assert a check that never happened. */
+const ROUTES_REVIEWED = "August 2026";
+
 const CITIES = ["Dubai", "İstanbul", "Antalya", "Bodrum", "İzmir"];
 
 export default function Home() {
@@ -138,7 +195,7 @@ export default function Home() {
         </section>
 
         {/* ---------------- Services ---------------- */}
-        <section id="services" className="bg-paper text-ink">
+        <section id="services" className="anchor-offset bg-paper text-ink">
           <div className="mx-auto max-w-6xl px-6 py-24 sm:py-28">
             <p className="eyebrow text-gold-deep">Our services</p>
             <h2 className="mt-5 max-w-2xl font-display text-3xl leading-tight tracking-tight text-navy text-balance sm:text-4xl">
@@ -159,7 +216,7 @@ export default function Home() {
         {/* ---------------- Process ---------------- */}
         {/* Numbering is used here because the content genuinely is a
             sequence — each step depends on the one before it. */}
-        <section id="process" className="border-b border-gold/15">
+        <section id="process" className="anchor-offset border-b border-gold/15">
           <div className="mx-auto max-w-6xl px-6 py-24 sm:py-28">
             <p className="eyebrow text-gold">Our process</p>
             <h2 className="mt-5 max-w-2xl font-display text-3xl leading-tight tracking-tight text-paper text-balance sm:text-4xl">
@@ -189,6 +246,83 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ---------------- Other routes ---------------- */}
+        {/* Placed after the Türkiye process, not before it: the point only
+            lands once the primary route has been explained in full. A paper
+            ground also breaks the navy/ink run into Quote.
+
+            Small gold type is `gold-deep` here, not `gold` — see globals.css,
+            gold on paper measures 2.30:1 and fails. */}
+        <section id="routes" className="anchor-offset bg-paper text-ink">
+          <div className="mx-auto max-w-6xl px-6 py-24 sm:py-28">
+            <p className="eyebrow text-gold-deep">Other routes</p>
+            <h2 className="mt-5 max-w-2xl font-display text-3xl leading-tight tracking-tight text-navy text-balance sm:text-4xl">
+              Türkiye is not the right answer for every family.
+            </h2>
+            <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-grey">
+              We lead with Türkiye because it is the route we know best, and
+              because it is the one where the money buys an asset you keep. It
+              is not the only route, and for some families it is not the best
+              one. These are the alternatives we will point you towards when
+              they suit you better than we do.
+            </p>
+
+            <div className="mt-16 grid gap-x-14 gap-y-14 lg:grid-cols-2">
+              {ROUTES.map(({ group, note, programmes }) => (
+                <div key={group}>
+                  <h3 className="font-display text-2xl tracking-tight text-navy">
+                    {group}
+                  </h3>
+                  <p className="mt-3 max-w-md text-[14px] leading-relaxed text-grey">
+                    {note}
+                  </p>
+                  <ul className="mt-8">
+                    {programmes.map(({ country, from, detail }) => (
+                      <li key={country} className="border-t border-ink/12 py-5">
+                        <div className="flex items-baseline justify-between gap-6">
+                          <span className="font-display text-lg tracking-tight text-navy">
+                            {country}
+                          </span>
+                          <span className="eyebrow shrink-0 text-gold-deep">
+                            {from}
+                          </span>
+                        </div>
+                        {detail && (
+                          <p className="mt-2 max-w-sm text-[13px] leading-relaxed text-grey">
+                            {detail}
+                          </p>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-16 grid gap-x-14 gap-y-8 border-t border-ink/12 pt-10 lg:grid-cols-2">
+              <div>
+                <p className="eyebrow text-navy">Before anything else</p>
+                <p className="mt-3 max-w-md text-[14px] leading-relaxed text-grey">
+                  Several of these programmes do not accept every nationality,
+                  and the restrictions are rarely advertised. Whether you
+                  qualify at all is the first thing we check — before you have
+                  paid us anything.
+                </p>
+              </div>
+              <div>
+                <p className="eyebrow text-navy">About these figures</p>
+                <p className="mt-3 max-w-md text-[14px] leading-relaxed text-grey">
+                  Minimum qualifying investments only. They exclude government,
+                  legal and due-diligence fees, which are substantial.
+                  Thresholds move — Greece raised its in 2024, Portugal closed
+                  its property route in 2023 — so every figure here is
+                  confirmed on enquiry. Last reviewed {ROUTES_REVIEWED}.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ---------------- Quote ---------------- */}
         <section className="bg-ink">
           <div className="mx-auto max-w-4xl px-6 py-24 text-center sm:py-28">
@@ -203,7 +337,7 @@ export default function Home() {
         </section>
 
         {/* ---------------- Contact ---------------- */}
-        <section id="contact" className="bg-paper text-ink">
+        <section id="contact" className="anchor-offset bg-paper text-ink">
           <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-24 sm:py-28 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="eyebrow text-gold-deep">Get in touch</p>

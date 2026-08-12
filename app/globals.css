@@ -58,6 +58,15 @@ body {
   text-transform: uppercase;
 }
 
+/* Every in-page anchor target carries this. The header is sticky and measures
+   77px, so without it a fragment link lands the section flush underneath —
+   heading hidden, paper ground bleeding behind a translucent bar, no visible
+   section boundary. 6rem leaves ~19px of the previous section showing, which
+   is what reads as an edge. One place to change if the header height moves. */
+@utility anchor-offset {
+  scroll-margin-top: 6rem;
+}
+
 :focus-visible {
   outline: 2px solid var(--color-gold);
   outline-offset: 3px;
