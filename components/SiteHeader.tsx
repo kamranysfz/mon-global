@@ -15,7 +15,7 @@ import { IconWhatsApp } from "./icons";
    section id on this page, or a real route. */
 const NAV = [
   { label: "Services", href: "#services" },
-  { label: "Citizenship", href: "#routes" },
+  { label: "Passports & Residency", href: "#routes" },
   { label: "Contact", href: "#contact" },
 ];
 

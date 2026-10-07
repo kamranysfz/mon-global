@@ -6,6 +6,7 @@ import {
   IconLegal,
   IconManagement,
   IconRelocation,
+  IconVisit,
   IconConsultation,
   IconShortlist,
   IconPurchase,
@@ -39,6 +40,11 @@ const SERVICES = [
     body: "Complete guidance through the citizenship-by-investment programme that fits you, from eligibility to submission.",
   },
   {
+    Icon: IconRelocation,
+    name: "Residency by Investment",
+    body: "Complete guidance through the residency-by-investment programme that fits you, from eligibility to approval.",
+  },
+  {
     Icon: IconLegal,
     name: "Legal Support",
     body: "An expert team handling due diligence, documents and compliance so every step is smooth and secure.",
@@ -49,7 +55,7 @@ const SERVICES = [
     body: "Where a route involves property or funds, we help you choose, hold and look after the investment well after the paperwork is done.",
   },
   {
-    Icon: IconRelocation,
+    Icon: IconVisit,
     name: "Relocation Assistance",
     body: "Schools, banking, residency, healthcare — we assist you and your family at every step of the move.",
   },
