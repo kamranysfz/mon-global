@@ -23,18 +23,18 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: "MON Global — Turkish Property & Citizenship Advisory",
+    default: "MON Global — Second Passports & Residency",
     template: "%s — MON Global",
   },
   description:
-    "We help families secure their future through property ownership and Turkish citizenship. Expert guidance across İstanbul, Antalya, Bodrum and İzmir, from Dubai.",
+    "Second passports and residency, for families anywhere. We guide you through citizenship and residency by investment, with honest advice at every step.",
   // metadataBase makes the relative og:image absolute. Without it Next emits a
   // relative URL, which most scrapers ignore — and the fallback is the favicon.
   metadataBase: new URL("https://mong.ae"),
   openGraph: {
-    title: "MON Global — Turkish Property & Citizenship Advisory",
+    title: "MON Global — Second Passports & Residency",
     description:
-      "We help families secure their future through property ownership and Turkish citizenship.",
+      "Second passports and residency, for families anywhere.",
     locale: "en_AE",
     type: "website",
     url: "https://mong.ae",
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
     // iMessage fall back to the favicon — which was Next.js's default triangle,
     // so every shared link carried a Vercel logo.
     images: [{ url: "/og.png", width: 1200, height: 630,
-               alt: "MON Global — Turkish property and citizenship advisory" }],
+               alt: "MON Global — Second passports and residency" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MON Global — Turkish Property & Citizenship Advisory",
+    title: "MON Global — Second Passports & Residency",
     description:
-      "We help families secure their future through property ownership and Turkish citizenship.",
+      "Second passports and residency, for families anywhere.",
     images: ["/og.png"],
   },
 };

@@ -8,7 +8,6 @@ import {
   IconRelocation,
   IconConsultation,
   IconShortlist,
-  IconVisit,
   IconPurchase,
   IconDocuments,
   IconApproval,
@@ -22,7 +21,7 @@ import {
 
 const VALUES = [
   { Icon: IconTrust, name: "Trust", line: "Your future, our priority." },
-  { Icon: IconExpertise, name: "Expertise", line: "Local knowledge, global standards." },
+  { Icon: IconExpertise, name: "Expertise", line: "Expert knowledge, global standards." },
   { Icon: IconCommitment, name: "Commitment", line: "Dedicated to your success." },
   { Icon: IconConfidentiality, name: "Confidentiality", line: "Your privacy is protected." },
   { Icon: IconIntegrity, name: "Integrity", line: "Honest advice, lasting relationships." },
@@ -31,23 +30,23 @@ const VALUES = [
 const SERVICES = [
   {
     Icon: IconProperty,
-    name: "Property Selection",
-    body: "Handpicked properties that match your goals and your lifestyle — not whatever happens to be on the market.",
+    name: "Route Selection",
+    body: "We compare citizenship and residency programmes against your goals, budget and nationality, and tell you honestly which ones suit your family.",
   },
   {
     Icon: IconCitizenship,
     name: "Citizenship by Investment",
-    body: "Complete guidance through the Turkish citizenship-by-investment route, from eligibility to submission.",
+    body: "Complete guidance through the citizenship-by-investment programme that fits you, from eligibility to submission.",
   },
   {
     Icon: IconLegal,
     name: "Legal Support",
-    body: "An expert legal team handling title, valuation and compliance so the purchase is smooth and secure.",
+    body: "An expert team handling due diligence, documents and compliance so every step is smooth and secure.",
   },
   {
     Icon: IconManagement,
-    name: "Property Management",
-    body: "Rent it, maintain it, protect it. We look after the investment long after the paperwork is done.",
+    name: "Investment Support",
+    body: "Where a route involves property or funds, we help you choose, hold and look after the investment well after the paperwork is done.",
   },
   {
     Icon: IconRelocation,
@@ -57,17 +56,17 @@ const SERVICES = [
 ];
 
 /* Copy note: steps 6 and 7 are deliberately written as application-and-
-   decision, not as a guaranteed outcome. Turkish citizenship by investment
-   is conditional on investment thresholds, a holding period and the
-   authorities' discretion — promising a passport is a claims exposure. */
+   decision, not as a guaranteed outcome. Citizenship and residency by
+   investment are conditional on investment thresholds, holding periods and
+   the authorities' discretion — promising a passport is a claims exposure. */
 const PROCESS = [
   { Icon: IconConsultation, name: "Consultation", body: "We understand your needs and goals." },
-  { Icon: IconShortlist, name: "Property shortlist", body: "We present the options worth your time." },
-  { Icon: IconVisit, name: "Visit Türkiye", body: "We arrange your trip and viewings." },
-  { Icon: IconPurchase, name: "Purchase", body: "We secure your property." },
+  { Icon: IconShortlist, name: "Route shortlist", body: "We present the programmes worth your time." },
+  { Icon: IconLegal, name: "Eligibility check", body: "We confirm you qualify before you commit anything." },
+  { Icon: IconPurchase, name: "Investment", body: "You make the qualifying investment, with us beside you." },
   { Icon: IconDocuments, name: "Documents", body: "We prepare and submit your application." },
-  { Icon: IconApproval, name: "Decision", body: "The Turkish authorities assess your application." },
-  { Icon: IconPassport, name: "Passports", body: "On approval, passports are issued to your family." },
+  { Icon: IconApproval, name: "Decision", body: "The authorities assess your application." },
+  { Icon: IconPassport, name: "Passports & permits", body: "On approval, passports or residence permits are issued to your family." },
 ];
 
 /* Minimum QUALIFYING investments, quoted "from" and excluding government,
@@ -148,17 +147,17 @@ export default function Home() {
             }}
           />
           <div className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:py-40">
-            <p className="eyebrow text-gold">Turkish Property &amp; Citizenship Advisory</p>
+            <p className="eyebrow text-gold">Second Passports &amp; Residency</p>
             <h1 className="mt-7 max-w-3xl font-display text-4xl leading-[1.08] tracking-tight text-paper text-balance sm:text-5xl lg:text-6xl">
-              Own property in Türkiye.
+              Second passports and residency,
               <br />
-              Secure your family&rsquo;s future.
+              for families anywhere.
             </h1>
             <div className="mt-9 h-px w-24 bg-gold" />
             <p className="mt-9 max-w-xl text-[15px] leading-relaxed text-stone/75">
-              We help families secure their future through property ownership and
-              Turkish citizenship — with expert guidance at every step, from the
-              first conversation to the passports in your hands.
+              We help families secure their future through citizenship and
+              residency by investment — with honest, expert guidance at every
+              step, from the first conversation to the final application.
             </p>
             <div className="mt-11 flex flex-wrap items-center gap-4">
               {/* Goes to WhatsApp, not to #contact. Both buttons on the page
@@ -250,24 +249,23 @@ export default function Home() {
         </section>
 
         {/* ---------------- Other routes ---------------- */}
-        {/* Placed after the Türkiye process, not before it: the point only
-            lands once the primary route has been explained in full. A paper
-            ground also breaks the navy/ink run into Quote.
+        {/* Placed after the process, so the reader knows how it works before
+            seeing the routes. A paper ground also breaks the navy/ink run
+            into Quote.
 
             Small gold type is `gold-deep` here, not `gold` — see globals.css,
             gold on paper measures 2.30:1 and fails. */}
         <section id="routes" className="anchor-offset bg-paper text-ink">
           <div className="mx-auto max-w-6xl px-6 py-24 sm:py-28">
-            <p className="eyebrow text-gold-deep">Other routes</p>
+            <p className="eyebrow text-gold-deep">Routes</p>
             <h2 className="mt-5 max-w-2xl font-display text-3xl leading-tight tracking-tight text-navy text-balance sm:text-4xl">
-              Türkiye is not the right answer for every family.
+              The right route depends on your family.
             </h2>
             <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-grey">
-              We lead with Türkiye because it is the route we know best, and
-              because it is the one where the money buys an asset you keep. It
-              is not the only route, and for some families it is not the best
-              one. These are the alternatives we will point you towards when
-              they suit you better than we do.
+              Programmes differ in cost, speed, travel access and what you are
+              left holding at the end. We walk you through the options that
+              suit your family, and tell you plainly when a route is not the
+              right one.
             </p>
 
             <div className="mt-16 grid gap-x-14 gap-y-14 lg:grid-cols-2">
@@ -333,7 +331,7 @@ export default function Home() {
               &ldquo;
             </span>
             <blockquote className="mt-4 font-display text-2xl leading-snug tracking-tight text-paper text-balance sm:text-3xl">
-              We don&rsquo;t just sell properties. We help you build a future where
+              We don&rsquo;t just process applications. We help you build a future where
               your family can live, travel and thrive.
             </blockquote>
           </div>

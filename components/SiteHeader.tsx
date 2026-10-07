@@ -19,7 +19,6 @@ const NAV = [
   { label: "Contact", href: "#contact" },
 ];
 
-const CITIES = ["Dubai", "İstanbul", "Antalya", "Bodrum", "İzmir"];
 
 /** Tailwind's `lg` breakpoint — the point the desktop nav appears. */
 const DESKTOP_QUERY = "(min-width: 1024px)";
@@ -210,16 +209,6 @@ export function SiteHeader() {
               +971 54 499 4859
             </a>
           </nav>
-
-          <div className="shrink-0 border-t border-gold/15 px-6 py-6">
-            <ul className="flex flex-wrap gap-x-5 gap-y-2">
-              {CITIES.map((city) => (
-                <li key={city} className="eyebrow text-stone/55">
-                  {city}
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       )}
     </>

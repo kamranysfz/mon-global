@@ -2,8 +2,6 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { IconInstagram, IconFacebook } from "./icons";
 
-const CITIES = ["Dubai", "İstanbul", "Antalya", "Bodrum", "İzmir"];
-
 /* Extracted from app/page.tsx so /privacy carries the same footer. Nothing in
    here changed in the move except the Privacy Policy link, which is a legal
    requirement of the Meta lead form and has to appear site-wide.
@@ -65,15 +63,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <ul className="mt-14 flex flex-wrap items-center gap-x-6 gap-y-3">
-          {CITIES.map((city) => (
-            <li key={city} className="eyebrow text-stone/70">
-              {city}
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-10 flex flex-col gap-4 border-t border-gold/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-4 border-t border-gold/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
           {/* The brand tagline, and half of a matched pair: MON CONSULTANCY
               carries "tailor made consulting". It is a formula, not a
               slogan — never reword one side without the other. This replaced
